@@ -15,8 +15,20 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightCoral">
 
-            <Entry Placeholder="Digite sua mensagem..."
-                   VerticalOptions="EndAndExpand"/>
+            <FlexLayout VerticalOptions="EndAndExpand"
+                        JustifyContent="SpaceBetween">
+
+                <Entry Text="{Binding Message}"
+                       Placeholder="Your message..."
+                       FlexLayout.Grow="1"/>
+
+                <Button Text="Send"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        BackgroundColor="Transparent"
+                        FlexLayout.Basis="50"
+                        Command="{Binding SendCommand}"/>
+            </FlexLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
