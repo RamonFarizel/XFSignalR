@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using XFSignalRApi.Models.Base;
 
 namespace XFSignalRApi.Models
 {
-    public class Message
+    public class Message : BaseEntity
     {
-        public int Id { get; set; }
         public string Autor { get; set; }
 
         [DataType(DataType.Date)]
