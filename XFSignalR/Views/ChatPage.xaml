@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:vm="clr-namespace:XFSignalR.ViewModels"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="XFSignalR.Views.ChatPage"
+             ios:Page.UseSafeArea="True"
+             Title="{Binding Title}">
+
+    <d:ContentPage.BindingContext>
+        <vm:ChatPageViewModel/>
+    </d:ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="LightCoral">
+
+            <Entry Placeholder="Digite sua mensagem..."
+                   VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

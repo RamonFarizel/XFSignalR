@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFSignalR.Views;
 
 namespace XFSignalR
 {
@@ -10,8 +11,7 @@ namespace XFSignalR
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
-
+            MainPage = new NavigationPage(new ChatPage());
         }
 
         protected override void OnStart()
