@@ -10,8 +10,8 @@ using XFSignalRApi.Repository;
 
 namespace XFSignalRApi.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class ChatController : ControllerBase
     {
         IRepository<Message> _repository { get;}
@@ -22,7 +22,6 @@ namespace XFSignalRApi.Controllers
         }
 
         [HttpPost]
-        [Consumes("application/json")]
         public IActionResult PostMessage([FromBody] Message message)
         {
             if (message is null)

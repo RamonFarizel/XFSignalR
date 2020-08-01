@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using XFSignalRApi.Data;
 using XFSignalRApi.Hubs;
+using XFSignalRApi.Repository;
 
 namespace XFSignalRApi
 {
@@ -31,8 +32,10 @@ namespace XFSignalRApi
 
             services.AddDbContext<ChatContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ChatContext")));
+
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
-    
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,11 +46,12 @@ namespace XFSignalRApi
             }
 
             app.UseRouting();
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/chathub");
-            });
+            }
         }
     }
 }
