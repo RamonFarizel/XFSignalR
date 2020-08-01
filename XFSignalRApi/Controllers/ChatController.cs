@@ -22,6 +22,7 @@ namespace XFSignalRApi.Controllers
         }
 
         [HttpPost]
+        [Consumes("application/json")]
         public IActionResult PostMessage([FromBody] Message message)
         {
             if (message is null)
