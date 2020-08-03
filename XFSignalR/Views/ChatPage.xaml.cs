@@ -15,5 +15,10 @@ namespace XFSignalR.Views
             InitializeComponent();
             BindingContext = _viewModel = new ChatPageViewModel(); 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }
