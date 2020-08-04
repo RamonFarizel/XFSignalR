@@ -28,14 +28,14 @@ namespace XFSignalR.ViewModels
 
         public ICommand SendCommand { get; set; }
 
-        HubManager _hubManager;
+        ChatHub _hubManager;
 
         public ChatPageViewModel()
         {
             Title = "ChatPage";
 
             Messages = new ObservableCollection<Message>();
-            _hubManager = new HubManager();
+            _hubManager = new ChatHub();
 
             _hubManager.OnMessageReceived += (username,message) => MessageReceived(username,message);
 
@@ -50,7 +50,7 @@ namespace XFSignalR.ViewModels
         async Task ExecuteSendCommand()
         {
             await SendMessage();
-            TextMessage = string.Empty;
+            CleanTextMessage(); 
         }
 
         async Task SendMessage()
@@ -58,7 +58,11 @@ namespace XFSignalR.ViewModels
             if (!_hubManager.IsConected)
                 await _hubManager.Connect();
 
-            await _hubManager.SendMessage(TextMessage, "Ramon");
+            string[] message = { TextMessage, "Ramon" };
+
+            await _hubManager.Send(message);
         }
+
+        private void CleanTextMessage() => TextMessage = string.Empty;
     }
 }
