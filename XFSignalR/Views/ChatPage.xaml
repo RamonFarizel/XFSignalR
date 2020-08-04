@@ -15,10 +15,31 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="LightCoral">
 
+            <CollectionView ItemsSource="{Binding Messages}"
+                            >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="LightBlue"
+                               CornerRadius="30"
+                               Padding="30"
+                               HasShadow="False"
+                               >
+                            <StackLayout>
+                                <Label Text="{Binding Text}"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Autor}"/>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
             <FlexLayout VerticalOptions="EndAndExpand"
                         JustifyContent="SpaceBetween">
 
-                <Entry Text="{Binding Message}"
+                <Entry Text="{Binding TextMessage}"
                        Placeholder="Your message..."
                        FlexLayout.Grow="1"/>
 

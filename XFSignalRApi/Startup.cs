@@ -29,6 +29,14 @@ namespace XFSignalRApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("https://localhost:2994");
+            }));
+
             services.AddSignalR();
 
             services.AddDbContext<ChatContext>(options =>
@@ -47,6 +55,8 @@ namespace XFSignalRApi
             }
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
